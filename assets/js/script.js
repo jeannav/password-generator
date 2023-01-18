@@ -6,16 +6,20 @@ var specialCharacters = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", 
 var numericCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 var generatePassword = function () {
+  // allows user to define the length of the password
   var userChoiceLength = window.prompt("Enter desired length of password (at least 8 characters & no more than 128 characters)");
 
   if (!userChoiceLength) {
     return;
+
   } else if (userChoiceLength >=8 && userChoiceLength<=128) {
     window.alert("When generated your password will contain " + userChoiceLength + " characters.");
+
   } else {
     window.alert("Error! Passwords must be at least 8 charactors and at most 128 characters. Please start over.")
     return;
   }
+// allows user to include uppercase letters
   var userChoiceUpperCase = window.prompt("Password contains at least one uppercase letter (YES or NO): ");
 
   if (!userChoiceUpperCase) {
@@ -34,7 +38,7 @@ var generatePassword = function () {
     window.alert("You must enter YES or NO. Please start over.")
     return;
   }
-
+// allows user to include lowercase letters 
   var userChoiceLowerCase = window.prompt("Password contains at least one lowercase letter (YES or NO): ");
 
   if (!userChoiceLowerCase) {
@@ -53,7 +57,7 @@ var generatePassword = function () {
     window.alert("You must enter YES or NO. Please start over.")
     return;
   }
-
+// allows user to include special characters
   var userChoiceSpecialCharacters = window.prompt("Password contains at least one special character (YES or NO): ");
 
   if (!userChoiceSpecialCharacters) {
@@ -72,7 +76,7 @@ var generatePassword = function () {
     window.alert("You must enter YES or NO. Please start over.")
     return;
   }
-
+// allows user to include numbers
   var userChoiceNumbers = window.prompt("Password contains at least one number (YES or NO): ");
 
   if (!userChoiceNumbers) {
@@ -90,13 +94,20 @@ var generatePassword = function () {
     window.alert("You must enter YES or NO. Please start over.")
     return;
   }
-if (userChoiceLength === "YES" || userChoiceLowerCase === "YES" || userChoiceNumbers === "YES" || userChoiceSpecialCharacters === "YES" || userChoiceUpperCase === "YES"){
+  // returns user to the beginning if they did not choose at least one character type
+if (userChoiceUpperCase === "YES" || userChoiceLowerCase === "YES" || userChoiceSpecialCharacters === "YES" || userChoiceNumbers === "YES"){
     window.alert("Congratulations!! You have selected all the reqiured criteria needed to generate a password, select OK to continue.");
+
 } else {
   window.alert("At least one character type needs to be included in order to generate password. Please start over.");
   return;
 }
   
+if (userChoiceUpperCase && userChoiceLowerCase && userChoiceSpecialCharacters && userChoiceNumbers === "YES") {
+  
+  var index = math.floor(Math.random() * userChoiceLength);
+}
+
 }
 // Write password to the #password input
 function writePassword() {
